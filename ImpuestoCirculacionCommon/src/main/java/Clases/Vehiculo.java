@@ -7,7 +7,12 @@ import java.time.LocalDate;
 public abstract class Vehiculo implements Serializable{
   
     private String matricula;
-	private LocalDate fechaMatriculacion;	
+	private LocalDate fechaMatriculacion;
+	
+	public Vehiculo(String mat, LocalDate fecha) {
+		this.matricula = mat;
+		this.fechaMatriculacion = fecha;
+	}
 
 	/**
      * Retorna el valor del impuesto de circulacion

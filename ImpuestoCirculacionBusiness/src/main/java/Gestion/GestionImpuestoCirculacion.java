@@ -1,5 +1,7 @@
 package Gestion;
 
+import java.util.List;
+
 import Clases.Contribuyente;
 import Clases.Vehiculo;
 import Excepciones.OperacionNoValida;
@@ -23,36 +25,55 @@ public class GestionImpuestoCirculacion implements IGestionContribuyentes, IGest
 	}
 	
 	public Contribuyente altaContribuyente(Contribuyente c) {
-		// TODO
-		return null;
+		return contribuyentes.creaContribuyente(c);
 	}
 
 	
 	public Contribuyente bajaContribuyente(String dni) throws OperacionNoValida {
-		// TODO
-		return null;		
+		Contribuyente c = contribuyentes.eliminaContribuyente(dni);
+		if (c != null && !c.getVehiculos().isEmpty()) {
+			contribuyentes.creaContribuyente(c);
+			throw new OperacionNoValida(dni);
+		}
+		return c;		
 	 }
 	
 	public Contribuyente contribuyente(String dni) {
-		// TODO
-		return null;
+		return contribuyentes.contribuyente(dni);
 	}
 
 	public Vehiculo altaVehiculo(Vehiculo v, String dni) throws OperacionNoValida {
-		// TODO
-		return null;
+		Contribuyente c = contribuyentes.contribuyente(dni);
+		if (c == null) {
+			return null;
+		}
+		Vehiculo vNuevo = vehiculos.creaVehiculo(v);
+		if (vNuevo == null) {
+			throw new OperacionNoValida(v.getMatricula());
+		}
+		c.getVehiculos().add(vNuevo);
+		contribuyentes.actualizaContribuyente(c);
+		return vNuevo;
 	}
 
-	@Override
+
 	public Vehiculo bajaVehiculo(String matricula, String dni) throws OperacionNoValida {
-		// TODO
-		return null;
+		Contribuyente c = contribuyentes.contribuyente(dni);
+		Vehiculo v = vehiculos.vehiculo(matricula);
+		if (c == null || v == null) {
+			return null;
+		}
+		if (!c.getVehiculos().contains(v)) {
+			throw new OperacionNoValida(matricula);
+		}
+		c.getVehiculos().remove(v);
+		contribuyentes.actualizaContribuyente(c);
+		return v;
 	}
 
-	@Override
+
 	public Vehiculo vehiculo(String matricula) {
-		// TODO
-		return null;
+		return vehiculos.vehiculo(matricula);
 	}	
 }
 

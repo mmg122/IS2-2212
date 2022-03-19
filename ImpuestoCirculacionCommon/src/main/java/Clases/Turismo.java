@@ -1,5 +1,6 @@
 package Clases;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 public class Turismo
@@ -7,6 +8,11 @@ public class Turismo
 {
 
 	private double potencia;
+	
+	public Turismo (String mat, LocalDate fecha, double p) {
+		super(mat, fecha);
+		this.potencia = p;
+	}
 	
 	/**
 	 * Retorna la potencia del turismo
@@ -23,8 +29,25 @@ public class Turismo
      */
 	@Override
     public double precioImpuesto() {
-		// TODO
-    	return 0;
+		double precio = 0;
+
+		if (!getFechaMatriculacion().plusYears(25).isAfter(LocalDate.now())) {
+			return precio;			
+		}
+		
+		if (potencia < 8) {
+			precio = 25.24;
+		} else if (potencia < 12) {
+			precio = 68.16;
+		} else if (potencia < 16) {
+			precio = 143.88;
+		} else if (potencia < 20) {
+			precio = 179.22;
+		} else {
+			precio = 224;
+		}
+		
+    	return precio;
     }
     
 }

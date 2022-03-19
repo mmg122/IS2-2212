@@ -18,7 +18,7 @@ import Clases.Contribuyente;
 public class Ayuntamiento implements Serializable {
 	
 	// Path absoluto al fichero de almacenamiento (reemplazar si cambia)
-	public static String DATA_FILE = "C:\\Temp\\ayuntamiento.out";
+	public static String DATA_FILE = "C:\\Windows\\Temp\\Ayuntamiento.out";
 
 	private List<Contribuyente> contribuyentes;
 

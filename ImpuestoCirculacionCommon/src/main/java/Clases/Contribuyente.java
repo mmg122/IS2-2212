@@ -1,5 +1,6 @@
 package Clases;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 @SuppressWarnings("serial")
@@ -11,14 +12,25 @@ public class Contribuyente implements Serializable {
     private String apellido2;
     private String dni;
     
+    public Contribuyente (String nom, String a1, String a2, String dni) {
+    	this.nombre = nom;
+    	this.apellido1 = a1;
+    	this.apellido2 = a2;
+    	this.dni = dni;
+    	vehiculos = new LinkedList<Vehiculo>();
+    }
+    
     /**
      * Retorna el total a pagar por el impuesto 
      * de circulacion de todos sus vehiculos
      * @return Valor del impuesto a pagar
      */
     public double totalAPagar() {
-    	//TODO
-    	return 0;
+    	double total = 0;
+    	for (Vehiculo v: vehiculos) {
+    		total += v.precioImpuesto(); 
+    	}
+    	return total;
     }
     
     /**

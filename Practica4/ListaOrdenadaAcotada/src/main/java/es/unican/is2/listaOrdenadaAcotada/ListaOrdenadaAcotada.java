@@ -44,8 +44,8 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaOrde
 			}
 		}
 		// desplaza elementos hacia adelante
-		for (int i = ultimo; i > indice; i--) {
-			lista[i + 1] = lista[i];
+		for (int i = ultimo; i >= indice; i--) {
+			lista[i+1] = lista[i];
 		}
 		// inserta el elemento
 		lista[indice] = elemento;

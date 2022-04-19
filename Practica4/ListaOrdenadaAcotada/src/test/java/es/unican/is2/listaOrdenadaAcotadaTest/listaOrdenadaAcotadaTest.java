@@ -44,8 +44,20 @@ public class listaOrdenadaAcotadaTest<E extends Comparable<E>> {
 	@Test
 	public void addListaOrdenadaAcotadaTest() {
 		ListaOrdenadaAcotada<Integer> l = new ListaOrdenadaAcotada();
+		
 		//Casos válidos
 		try {
+			l.add(3);
+			l.add(1);
+			l.add(5);
+			assertTrue(l.get(0) == 1);
+			assertTrue(l.get(1) == 3);
+			assertTrue(l.get(2) == 5);
+		} catch(IllegalStateException e) {
+			fail("Caso 4: No debería lanzar la excepción");
+		}
+		try {
+			l.clear();
 			for (int i = 0; i < 10; i++) {
 				l.add(i);
 				assertTrue(l.get(i) == i);

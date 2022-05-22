@@ -16,7 +16,7 @@ public abstract class Vendedor {
 	// Valor total de las ventas mensuales realizadas por el vendedor
 	private double total;
 	
-	public Vendedor(String nombre, String id, String dni) { // WMC +1
+	protected Vendedor(String nombre, String id, String dni) { // WMC +1
 		this.nombre = nombre;
 		this.id = id;
 		this.dni = dni;
@@ -75,6 +75,8 @@ public abstract class Vendedor {
 	
 	@Override
 	public boolean equals(Object obj) { // WMC +1
+		if (!(obj instanceof Vendedor))
+			return false;
 		Vendedor v = (Vendedor) obj;
 		return (v.getId().equals(getId()) && v.getDni().equals(getDni())); // WMC +2 CCog +2
 	}

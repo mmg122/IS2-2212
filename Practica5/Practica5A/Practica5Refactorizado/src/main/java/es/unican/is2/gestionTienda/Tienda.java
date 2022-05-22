@@ -23,6 +23,12 @@ public class Tienda {
 	private String nombre;
 
 	private String datos;
+	
+	private static final String NOMBRE_STRING = "  Nombre: ";
+	private static final String ID = " Id: ";
+	private static final String DNI = " DNI: ";
+	private static final String TOTAL = " TotalVentasMes: ";
+	
 
 	/**
 	 * Crea la tienda cargando los datos desde el fichero indicado
@@ -146,40 +152,40 @@ public class Tienda {
 			// lee los vendedores senior
 			while (in.hasNext() && !in.next().equals("Junior")) { // WMC +2 CCog +2
 
-				String nombre = in.next();
+				String nom = in.next();
 				in.next();
 				String idIn = in.next();
 				in.next();
 				String dni= in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, dni, TipoVendedor.SENIOR);
+				ven = new VendedorEnPlantilla(nom, idIn, dni, TipoVendedor.SENIOR);
 				ven.setTotal(totalVentas);
 				lista.add(ven);
 			}
 			// lee los vendedores junior
 			while (in.hasNext() && !in.next().equals("Prácticas")) { // WMC +2 CCog +2
-				String nombre = in.next();
+				String nom = in.next();
 				in.next();
 				String idIn = in.next();
 				in.next();
 				String dni= in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, dni, TipoVendedor.JUNIOR);
+				ven = new VendedorEnPlantilla(nom, idIn, dni, TipoVendedor.JUNIOR);
 				ven.setTotal(totalVentas);
 				lista.add(ven);
 			}
 			while (in.hasNext()) { // WMC +1 CCog +1
 				in.next();
-				String nombre = in.next();
+				String nom = in.next();
 				in.next();
 				String idIn = in.next();
 				in.next();
 				String dni= in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn, dni);
+				ven = new VendedorEnPracticas(nom, idIn, dni);
 				ven.setTotal(totalVentas);
 				lista.add(ven);
 			}
@@ -206,7 +212,7 @@ public class Tienda {
 		List<Vendedor> practicas = new LinkedList<Vendedor>();
 
 		for (Vendedor v : lista) { // WMC +1 CCog +1
-			if (v instanceof vendedorEnPracticas) { // WMC +1 CCog +2
+			if (v instanceof VendedorEnPracticas) { // WMC +1 CCog +2
 				practicas.add(v);
 			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 CCog +1
 				VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
@@ -227,21 +233,21 @@ public class Tienda {
 			out.println("Senior");
 			for (Vendedor v : senior) { // WMC +1 CCog +1
 				VendedorEnPlantilla v1 = (VendedorEnPlantilla) v;
-				out.println("  Nombre: " + v1.getNombre() + " Id: " + v1.getId() + " DNI: "+ v1.getDni()+" TotalVentasMes: "
+				out.println(NOMBRE_STRING + v1.getNombre() + ID + v1.getId() + DNI+ v1.getDni()+TOTAL
 						+ v1.getTotalVentas());
 			}
 			out.println();
 			out.println("Junior");
 			for (Vendedor v : junior) { // WMC +1 CCog +1
 				VendedorEnPlantilla v2 = (VendedorEnPlantilla) v;
-				out.println("  Nombre: " + v2.getNombre() + " Id: " + v2.getId() + " DNI: "+ v2.getDni()+" TotalVentasMes: "
+				out.println(NOMBRE_STRING + v2.getNombre() + ID + v2.getId() + DNI+ v2.getDni()+TOTAL
 						+ v2.getTotalVentas());
 			}
 			out.println();
 			out.println("Prácticas");
 			for (Vendedor v : practicas) { // WMC +1 CCog +1
-				vendedorEnPracticas v3 = (vendedorEnPracticas) v;
-				out.println("  Nombre: " + v3.getNombre() + " Id: " + v3.getId() + " DNI: "+ v3.getDni()+" TotalVentasMes: "
+				VendedorEnPracticas v3 = (VendedorEnPracticas) v;
+				out.println(NOMBRE_STRING + v3.getNombre() + ID + v3.getId() + DNI+ v3.getDni()+TOTAL
 						+ v3.getTotalVentas());
 			}
 

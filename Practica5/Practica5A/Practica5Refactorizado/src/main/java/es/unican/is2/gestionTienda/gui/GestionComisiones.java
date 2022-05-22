@@ -21,7 +21,9 @@ public class GestionComisiones {
 	 */
 	public static void main(String[] args) { // WMC +1
 		// opciones del menu
-		final int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
+		final int NUEVA_VENTA = 0;
+		final int VENDEDOR_DEL_MES = 1;
+		final int VENDEDORES = 2;
 
 		// variables auxiliares
 		String dni;
@@ -82,6 +84,10 @@ public class GestionComisiones {
 					msj += vn.getNombre() + " " + vn.getTotalVentas() + "\n";
 				}
 				mensaje("VENDEDORES", msj);
+				break;
+				
+			default:
+				mensaje("FALLO", "Fallo al elegir opción");
 				break;
 			}
 		}

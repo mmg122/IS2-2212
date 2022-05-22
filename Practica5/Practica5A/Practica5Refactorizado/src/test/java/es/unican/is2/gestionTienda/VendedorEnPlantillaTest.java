@@ -19,11 +19,11 @@ public class VendedorEnPlantillaTest {
 	
 	@Test
 	public void testConstructor() {
-		assertEquals(sutJunior.getId(), "1");
-		assertEquals(sutJunior.getDni(), "11111111A");
-		assertEquals(sutJunior.getNombre(), "Ana");
-		assertEquals(sutJunior.tipo(), TipoVendedor.JUNIOR);
-		assertEquals(sutSenior.tipo(), TipoVendedor.SENIOR);
+		assertEquals("1", sutJunior.getId());
+		assertEquals("11111111A", sutJunior.getDni());
+		assertEquals("Ana", sutJunior.getNombre());
+		assertEquals(TipoVendedor.JUNIOR, sutJunior.tipo());
+		assertEquals(TipoVendedor.SENIOR, sutSenior.tipo());
 		
 	}
 
@@ -31,16 +31,16 @@ public class VendedorEnPlantillaTest {
 	public void testAnhadeVenta() {
 		
 		sutJunior.anhade(200);
-		assertEquals(sutJunior.getTotalVentas(), 200, 0);
+		assertEquals(200, sutJunior.getTotalVentas(), 0);
 		
 		sutJunior.anhade(300);
-		assertEquals(sutJunior.getTotalVentas(), 500, 0);
+		assertEquals(500, sutJunior.getTotalVentas(), 0);
 		
 		sutSenior.anhade(300);
-		assertEquals(sutSenior.getTotalVentas(), 300, 0);
+		assertEquals(300, sutSenior.getTotalVentas(), 0);
 		
 		sutSenior.anhade(300);
-		assertEquals(sutSenior.getTotalVentas(), 600, 0);
+		assertEquals(600, sutSenior.getTotalVentas(), 0);
 		
 	}
 	
@@ -48,18 +48,18 @@ public class VendedorEnPlantillaTest {
 	public void testSetTotalVentas() {
 		
 		sutJunior.setTotal(2000);
-		assertEquals(sutJunior.getTotalVentas(), 2000, 0);	
+		assertEquals(2000, sutJunior.getTotalVentas(), 0);	
 		sutJunior.setTotal(4000);
-		assertEquals(sutJunior.getTotalVentas(), 4000, 0);	
+		assertEquals(4000, sutJunior.getTotalVentas(), 0);	
 		sutJunior.setTotal(0);
-		assertEquals(sutJunior.getTotalVentas(), 0, 0);
+		assertEquals(0, sutJunior.getTotalVentas(), 0);
 		
 		sutSenior.setTotal(4500);
-		assertEquals(sutSenior.getTotalVentas(), 4500, 0);		
+		assertEquals(4500, sutSenior.getTotalVentas(), 0);		
 		sutSenior.setTotal(4000);
-		assertEquals(sutSenior.getTotalVentas(), 4000, 0);
+		assertEquals(4000, sutSenior.getTotalVentas(), 0);
 		sutJunior.setTotal(0);
-		assertEquals(sutJunior.getTotalVentas(), 0, 0);	
+		assertEquals(0, sutJunior.getTotalVentas(), 0);	
 		
 	}
 
